@@ -6,10 +6,23 @@ let two_el = document.getElementById("2");
 let three_el = document.getElementById("3");
 let four_el = document.getElementById("4");
 let five_el = document.getElementById("5");
-let z_el = document.getElementById("z"); 
-let x_el = document.getElementById("x");
-let c_el = document.getElementById("c"); 
-let v_el = document.getElementById("v");
+let z_el = document.getElementById("6"); 
+let x_el = document.getElementById("7");
+let c_el = document.getElementById("8"); 
+let v_el = document.getElementById("9");
+
+//hotkeys
+let onehk = document.getElementById("1hk");
+let twohk = document.getElementById("2hk");
+let threehk = document.getElementById("3hk");
+let fourhk = document.getElementById("4hk");
+let fivehk = document.getElementById("5hk");
+let sixhk = document.getElementById("6hk");
+let sevenhk = document.getElementById("7hk");
+let eighthk = document.getElementById("8hk");
+let ninehk = document.getElementById("9hk");
+
+
 
 let timer_count = 100;
 let timer_on = false;
@@ -18,6 +31,7 @@ let randomNum = Math.floor(Math.random() * 9) + 1;
 let Scores_list = [0];
 let audio = new Audio('press.wav');
 let end_sound = new Audio('fart.wav');
+
 
 
 function BubbleSort(arr){
@@ -33,6 +47,7 @@ function BubbleSort(arr){
     };
     return arr[arr.length - 1];
 }
+
 //keyboard listener
 function keyboard_listener(){
     if (randomNum == 1){
@@ -57,13 +72,23 @@ function keyboard_listener(){
     
     document.addEventListener('keyup', (event) => {
         let name = event.key;
-        if (name == "z"){
+        if (name == one_el.innerHTML){
+            name = "1";
+        } else if (name == two_el.innerHTML){
+            name = "2";
+        } else if (name == three_el.innerHTML){
+            name = "3";
+        } else if (name == four_el.innerHTML){
+            name = "4";
+        } else if(name == five_el.innerHTML){
+            name = "5";
+        }else if (name == z_el.innerHTML){
             name = "6";
-        } else if (name == "x"){
+        } else if (name == x_el.innerHTML){
             name = "7";
-        } else if (name == "c"){
+        } else if (name == c_el.innerHTML){
             name = "8";
-        } else if (name == "v"){
+        } else if (name == v_el.innerHTML){
             name = "9";
         } else{
             name = name;
@@ -94,6 +119,7 @@ function keyboard_listener(){
 
 
 function start(){
+    
     audio.play();
     timer_on = true;
 
@@ -101,6 +127,17 @@ function start(){
 
 function updateClock(){
     setTimeout(updateClock,100);    
+
+    //setting hotkeys
+    one_el.innerHTML = onehk.value;
+    two_el.innerHTML = twohk.value;
+    three_el.innerHTML = threehk.value;
+    four_el.innerHTML = fourhk.value;
+    five_el.innerHTML = fivehk.value;
+    z_el.innerHTML = sixhk.value;
+    x_el.innerHTML = sevenhk.value;
+    c_el.innerHTML = eighthk.value;
+    v_el.innerHTML = ninehk.value;
 
     if(timer_on == true){
         keyboard_listener();
@@ -130,5 +167,25 @@ function updateClock(){
     }
 
 }
+
+let dropdwn = true;
+//hot key droptdwnbtn 
+function myFunction() {
+    if (dropdwn == true){
+        
+        document.getElementById("myDropdown").classList.toggle("show");
+        dropdwn = false;
+    } else{
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+        dropdwn = true;
+    }
+  }
 
 updateClock();
