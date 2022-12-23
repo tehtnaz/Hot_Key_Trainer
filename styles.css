@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    background-color: black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.start_btn{
+    margin-top: 50px;
+    font-weight: bolder;
+}
+.start_btn:hover{
+    background-color: lightcoral;
+}
+
+.a{
+    border: 1px solid white;
+    width: 500px;
+    height: 50px;
+}
+.letter{
+    font-size: 20px;
+}
+
+.text-container{
+    margin-top: 100px;
+}
+
+.text{
+    color: white;
+    font-size: xx-large;
+}
