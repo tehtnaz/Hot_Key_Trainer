@@ -77,6 +77,7 @@ function keyboard_listener(){
         if (randomNum == name){
             audio.play();
             score_count += 1;
+            randomNum = Math.floor(Math.random() * 9) + 1;
             one_el.style.color = "#1F2022";
             two_el.style.color = "#1F2022";
             three_el.style.color = "#1F2022";
@@ -86,7 +87,6 @@ function keyboard_listener(){
             x_el.style.color = "#1F2022";
             c_el.style.color = "#1F2022";
             v_el.style.color = "#1F2022";
-            randomNum = Math.floor(Math.random() * 9) + 1;
 
         }
       }, false);
@@ -117,6 +117,15 @@ function updateClock(){
             timer_count = 100;
             High_Score.innerHTML = "High Score: " + BubbleSort(Scores_list);
             score.style.color = "white";
+            one_el.style.color = "#1F2022";
+            two_el.style.color = "#1F2022";
+            three_el.style.color = "#1F2022";
+            four_el.style.color = "#1F2022";
+            five_el.style.color = "#1F2022";
+            z_el.style.color = "#1F2022";
+            x_el.style.color = "#1F2022";
+            c_el.style.color = "#1F2022";
+            v_el.style.color = "#1F2022";
         }
     }
 
