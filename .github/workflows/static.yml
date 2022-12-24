@@ -44,6 +44,7 @@ jobs:
         run: |
           npm install
           npm run build
+          sed -i "s/assets/Hot_Key_Trainer\/assets/" dist/index.html
       
       - name: Setup Pages
         uses: actions/configure-pages@v2
