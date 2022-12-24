@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: |
           npm install
-          npx vite build
+          npm run build
       
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -55,3 +55,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          token: ${{ github.token }}
