@@ -37,13 +37,13 @@ jobs:
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Build
         run: |
           npm install
           npx vite build
-        with:
-          node-version: ${{ matrix.node-version }}
       
       - name: Setup Pages
         uses: actions/configure-pages@v2
