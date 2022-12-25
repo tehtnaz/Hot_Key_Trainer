@@ -35,7 +35,7 @@ const hotkeyArray = [
 ] as HTMLInputElement[];
 
 
-let timer_count = 100;
+let time = Date.now();
 let timer_on = false;
 let score_count = 0;
 let randomNum = Math.floor(Math.random() * 9) + 1;
@@ -88,11 +88,9 @@ document.addEventListener('keydown', (event) => {
 function start(){
     audio.play();
     timer_on = true;
+    time = Date.now();
 }
-
 function updateClock(){
-    setTimeout(updateClock,100);    
-
     //setting hotkeys
     for(let i = 0; i < elementArray.length; i++){
         elementArray[i].innerHTML = hotkeyArray[i].value!;
@@ -101,16 +99,15 @@ function updateClock(){
     if(timer_on === true){
         elementArray[randomNum - 1].style.color = "green";
 
-        timer_count -= 1;
-        timer_el.innerHTML = `Timer: ${Math.floor(timer_count/10)}.${timer_count%10}0`;
+        timer_el.innerHTML = `Timer: ${Math.floor((time - Date.now()) / 1000) + 10}.${Math.floor((Date.now() - time)/10) % 100}`;
         score.innerHTML = "Score: " + score_count;
         High_Score.innerHTML = "High Score: " + findGreatest(Scores_list);
-        if (timer_count == 0){
+        if (time + 10000 < Date.now()){
             end_sound.play();
             Scores_list.unshift(score_count);
             score_count = 0;
             timer_on = false;
-            timer_count = 100;
+            timer_el.innerHTML = `Timer: 0.00`;
             High_Score.innerHTML = "High Score: " + findGreatest(Scores_list);
             score.style.color = "white";
             for(const item of elementArray){
@@ -118,7 +115,7 @@ function updateClock(){
             }
         }
     }
-
+    setTimeout(updateClock, 10);
 }
 
 let dropdwn = true;
